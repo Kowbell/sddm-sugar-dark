@@ -42,13 +42,15 @@ Pane{
     font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80)
     focus: true
 
+    property double panelWidth: config.PanelWidth != "" ? parseFloat(config.PanelWidth) : width / 2.5
+
     RowLayout {
         anchors.fill: parent
         spacing: 0
 
         LoginForm {
             Layout.minimumHeight: parent.height
-            Layout.maximumWidth: parent.width / 2.5
+            Layout.maximumWidth: panelWidth > 1.0 ? panelWidth : parent.width * panelWidth;
         }
 
         Item {
